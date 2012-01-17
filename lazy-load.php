@@ -32,10 +32,10 @@ class LazyLoad_Images {
 			return $content;
 
 		// In case you want to change the placeholder image
-		$image = apply_filters( 'lazyload_images_placeholder_image', $this->get_url( 'images/1x1.trans.gif' ) );
+		$placeholder_image = apply_filters( 'lazyload_images_placeholder_image', $this->get_url( 'images/1x1.trans.gif' ) );
 
 		// This is a pretty simple regex, but it works
-		$content = preg_replace( '#<img([^>]+?)src=#', sprintf( '<img${1}src="%s" data-lazy-src=', $image ), $content );
+		$content = preg_replace( '#<img([^>]+?)src=[\'"]([^\'">]*)[\'"]([^>]*)>#', sprintf( '<img${1}src="%s" data-lazy-src="${2}"${3}><noscript><img${1}src="${2}"${3}></noscript>', $placeholder_image ), $content );
 
 		return $content;
 	}
