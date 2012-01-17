@@ -27,6 +27,11 @@ No applicable screenshots
 
 == Changelog ==
 
+= 0.2 =
+
+* Adds noscript tags to allow the image to show up in no-js contexts (including crawlers), props smub
+* Lazy Load post thumbnails, props ivancamilov
+
 = 0.1 =
 
 * Initial working version
