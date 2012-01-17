@@ -19,6 +19,7 @@ class LazyLoad_Images {
 	function __construct() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_scripts' ) );
 		add_filter( 'the_content', array( $this, 'add_image_placeholders' ) );
+		add_filter( 'post_thumbnail_html', array( $this, 'add_image_placeholders' ) );
 	}
 
 	function add_scripts() {
