@@ -51,7 +51,7 @@ class LazyLoad_Images {
 }
 
 function lazyload_images_add_placeholders( $content ) {
-	LazyLoad_Images::add_image_placeholders( $content );
+	return LazyLoad_Images::add_image_placeholders( $content );
 }
 
 LazyLoad_Images::init();
