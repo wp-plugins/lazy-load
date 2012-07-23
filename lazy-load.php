@@ -16,18 +16,18 @@ class LazyLoad_Images {
 
 	const version = '0.4';
 
-	function init() {
+	static function init() {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'add_scripts' ) );
 		add_filter( 'the_content', array( __CLASS__, 'add_image_placeholders' ), 99 ); // run this later, so other content filters have run, including image_add_wh on WP.com
 		add_filter( 'post_thumbnail_html', array( __CLASS__, 'add_image_placeholders' ), 11 );
 	}
 
-	function add_scripts() {
+	static function add_scripts() {
 		wp_enqueue_script( 'wpcom-lazy-load-images',  self::get_url( 'js/lazy-load.js' ), array( 'jquery', 'jquery-sonar' ), self::version, true );
 		wp_enqueue_script( 'jquery-sonar', self::get_url( 'js/jquery.sonar.min.js' ), array( 'jquery' ), self::version, true );
 	}
 
-	function add_image_placeholders( $content ) {
+	static function add_image_placeholders( $content ) {
 		// Don't lazyload for feeds, previews, mobile
 		if( is_feed() || is_preview() || ( function_exists( 'is_mobile' ) && is_mobile() ) )
 			return $content;
@@ -45,7 +45,7 @@ class LazyLoad_Images {
 		return $content;
 	}
 
-	function get_url( $path = '' ) {
+	static function get_url( $path = '' ) {
 		return plugins_url( ltrim( $path, '/' ), __FILE__ );
 	}
 }
