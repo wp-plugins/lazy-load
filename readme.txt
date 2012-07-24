@@ -58,6 +58,11 @@ This will lazy load <em>all</em> your images.
 
 == Changelog ==
 
+= 0.5 =
+
+* Fix lazyload_images_add_placeholders by adding missing return, props Kevin Smith
+* Lazy load avatars, props i8ramin
+
 = 0.4 =
 
 * New helper function to lazy load non-post content
